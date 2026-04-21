@@ -1,26 +1,161 @@
 @import "tailwindcss";
+@import "@xyflow/react/dist/style.css";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Specimen — "Periodical" academic palette (locked M0) */
+  --paper:     #f6f4ee;
+  --paper-2:   #ece8db;
+  --card:      #fdfbf5;
+
+  --ink:       #0a2540;
+  --ink-2:     #3a4d64;
+  --ink-3:     #6b7a8e;
+  --ink-4:     #a2a9b4;
+
+  --line:      #d9d2c0;
+  --line-2:    #c1b89e;
+
+  --accent:      #a85432;
+  --accent-2:    #712d15;
+  --accent-soft: #f3dac9;
+
+  --olive:       #5b6f47;
+  --olive-soft:  #e1e7d4;
+  --gold:        #b88a3f;
+  --gold-soft:   #f2e6ca;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-ink-4: var(--ink-4);
+  --color-line: var(--line);
+  --color-line-2: var(--line-2);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-olive: var(--olive);
+  --color-olive-soft: var(--olive-soft);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+
+  --font-serif: var(--font-garamond);
+  --font-serif-text: var(--font-spectral);
+  --font-mono: var(--font-fira);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html, body {
+  background: var(--paper);
+  color: var(--ink);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-serif-text), var(--font-serif), "Spectral", "EB Garamond", Georgia, serif;
+  font-weight: 400;
+  font-feature-settings: "onum" 1, "liga" 1, "kern" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  line-height: 1.65;
+  letter-spacing: 0;
+}
+
+.display {
+  font-family: var(--font-serif), "EB Garamond", Georgia, serif;
+  font-weight: 500;
+  font-feature-settings: "onum" 1, "liga" 1, "kern" 1, "lnum" 0;
+  letter-spacing: -0.012em;
+}
+.display-italic {
+  font-family: var(--font-serif), "EB Garamond", Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.004em;
+}
+
+.label {
+  font-family: var(--font-mono), "Fira Code", monospace;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.mono {
+  font-family: var(--font-mono), "Fira Code", ui-monospace, monospace;
+  font-feature-settings: "calt" 1, "liga" 1;
+}
+
+.smallcaps {
+  font-family: var(--font-serif), Georgia, serif;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+}
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--line-2);
+  border-radius: 10px;
+  border: 2px solid var(--paper);
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--ink);
+}
+
+.rule        { border: 0; height: 1px; background: var(--line); }
+.rule-thick  { border: 0; height: 2px; background: var(--ink); }
+.rule-dotted { border: 0; border-top: 1px dotted var(--line-2); height: 1px; }
+
+/* Academic two-column layout helper */
+.two-col {
+  column-count: 2;
+  column-gap: 40px;
+  column-rule: 1px solid var(--line);
+}
+@media (max-width: 768px) {
+  .two-col { column-count: 1; }
+}
+
+/* Drop-cap for article opener */
+.drop-cap::first-letter {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 3.8em;
+  font-weight: 500;
+  float: left;
+  line-height: 0.82;
+  padding: 8px 8px 0 0;
+  color: var(--ink);
+}
+
+/* React Flow overrides for the periodical palette */
+.react-flow { background: var(--paper); }
+.react-flow__node { font-family: var(--font-serif-text); }
+.react-flow__controls {
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  overflow: hidden;
+  background: var(--card);
+}
+.react-flow__controls-button {
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-2);
+}
+.react-flow__controls-button:hover { background: var(--paper-2); color: var(--ink); }
+.react-flow__attribution { display: none; }
+
+@keyframes cite-pulse {
+  0%, 100% { stroke-opacity: 0.25; }
+  50%      { stroke-opacity: 1;    }
+}
+.edge-pulse path.react-flow__edge-path {
+  animation: cite-pulse 2s ease-in-out infinite;
 }
