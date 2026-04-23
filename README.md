@@ -1,6 +1,6 @@
 # Specimen — Literature-review agent
 
-Portfolio project #7. Upload a corpus of papers; get a citation graph, synthesis brief, and drafted literature review. For PhD candidates and R&D scientists.
+Upload a corpus of papers; get a citation graph, synthesis brief, and drafted literature review. For PhD candidates and R&D scientists.
 
 Live: https://specimen.raymnz.com
 

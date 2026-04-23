@@ -1,6 +1,6 @@
 # Specimen — Literature-review agent for researchers
 
-> Portfolio project #7. Upload a corpus of papers; get a citation graph, synthesis brief, and drafted literature review.
+>  Upload a corpus of papers; get a citation graph, synthesis brief, and drafted literature review.
 
 ## M0 — Design direction (LOCKED)
 
