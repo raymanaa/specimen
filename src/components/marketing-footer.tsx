@@ -22,7 +22,6 @@ export function MarketingFooter() {
           </Col>
           <Col label="Context">
             <span className="text-ink-2">Built by Rayen Manaa</span>
-            <span className="text-ink-2">Portfolio project #7</span>
             <a
               href="https://github.com/raymanaa/specimen"
               target="_blank"
